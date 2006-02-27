@@ -1,0 +1,89 @@
+                                   RaboGRAPH
+
+   RaboGRAHP is een programma wat statistieken, overzichten en grafieken
+   genereerd van je Rabobank afschriften. Deze afschriften kun je downloaden
+   via Rabobank Internetbankieren.
+
+   Auteur        : Ferry Boemder                              
+   Versie        : 0.4                                        
+   Licensie      : GNU GPL (General Public License)           
+   Compatibility : Unix, Windows, (alles wat php kan draaien) 
+   Homepage      : http://www.electricmonk.nl                 
+
+Benodigheden
+
+  Unix
+
+     * PHP Commandline interpreter
+     * Webbrowser
+     * Rabobank Internet bankieren
+
+  Windows
+
+     * Webbrowser
+     * Rabobank Internet bankieren
+
+Installatie / gebruik
+
+  Unix
+
+     * Untar het rabograp-X.Y.tar.gz archief
+     * Start Rabobank Internet bankieren en log in.
+     * Ga naar Betalen en Sparen -> Download
+     * Maak bij Alle transacties van de volgende rekening: een keuze over
+       welke rekening je statiesteken wilt geneneren.
+     * Voer een begin en einddatum in. Als begindatum kun je 01-01-2004
+       invullen (eerder kan niet, bij mij althans). Als einddatum vul je de
+       datum van vandaag in.
+     * Kies Kommagescheiden formaat en klik op de download knop.
+     * Sla het resulterende bestand 'mut.txt' op in de rabograp-X.Y/
+       directory.
+     * Run het rabograp.php script: php ./rabograp.txt
+     * Open met je browser het rabograp.html bestand om de index pagina te
+       laden.
+
+  Windows
+
+     * Download en run het rabograp-X.Y.exe bestand. Het bestand maakt nu een
+       directory aan met daarin het programma.
+     * Start Rabobank Internet bankieren en log in.
+     * Ga naar Betalen en Sparen -> Download
+     * Maak bij Alle transacties van de volgende rekening: een keuze over
+       welke rekening je statiesteken wilt geneneren.
+     * Voer een begin en einddatum in. Als begindatum kun je 01-01-2004
+       invullen (eerder kan niet, bij mij althans). Als einddatum vul je de
+       datum van vandaag in.
+     * Kies Kommagescheiden formaat en klik op de download knop.
+     * Sla het resulterende bestand 'mut.txt' op in de rabograp-X.Y/
+       directory.
+     * Dubbelklik het 'rabograp.bat bestand.
+     * Heb even geduld (het programma is wat traag onder Windows). Nu start
+       automatisch een INternet browser op met daarin de hoofdpagina van de
+       rapportage.
+
+Copyright / Licensie
+
+   RaboGRAP is (C) Copyright van Ferry Boender
+
+   Gelicenseerd onder de GPL (General Public License). Dit betekend dat je
+   het programma door mag sturen naar anderen en aan mag passen voor je eigen
+   gebruik of voor commercieel gebruik (maar in dat laatste geval mag je het
+   niet meer doorsturen naar anderen).
+
+ RaboGRAP: A statistics and report generator for Rabobank banking receipts
+ Copyright (C) 2006 Ferry Boender
+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+    

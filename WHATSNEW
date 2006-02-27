@@ -1,0 +1,25 @@
+0.4
+
+    - Page with totals for all transactions added.
+    - Link back to the homepage on all pages.
+    - Bugfix in name of Month displayed on Month overviews.
+    - Links to dates without transactions no longer clickable.
+    - CSS tweaks.
+    - Month headers in transaction views are now links to the month overview page.
+    - Euro sign added where it was missing.
+    - Each page now has an index.
+	- All pages (Total, Year and Month) now show transaction per counter party (receiving party).
+	- 'All transactions' lists now have per-month totals (nr of transactions and sums).
+	- More usage of Credit/Debit colours! Nice little perty colours!
+	- Graphs of monthly debit/credit expenses in Year overview.
+
+0.3
+
+    - License changed to GPL.
+0.2
+
+    - Copyright & Licensing added.
+
+0.1
+
+    - Initial release.

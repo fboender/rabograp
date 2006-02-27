@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>RaboGRAPH</title>
+</head>
+<body>
+    <h1>RaboGRAPH</h1>
+    <p>RaboGRAHP is een programma wat statistieken, overzichten en grafieken genereerd van je Rabobank afschriften. Deze afschriften kun je downloaden via Rabobank Internetbankieren.</p>
+    <table>
+        <tr><td><b>Auteur</b></td><td>: Ferry Boemder</td></tr>
+        <tr><td><b>Versie</b></td><td>: 0.4</td></tr>
+        <tr><td><b>Licensie</b></td><td>: <a href="http://www.gnu.org/copyleft/gpl.html">GNU GPL (General Public License)</a></td></tr>
+        <tr><td><b>Compatibility</b></td><td>: Unix, Windows, (alles wat php kan draaien)</td></tr>
+        <tr><td><b>Homepage</b></td><td>: <a href="http://www.electricmonk.nl/">http://www.electricmonk.nl</a></td></tr>
+    </table>
+
+    <h2>Benodigheden</h2>
+    <h3>Unix</h3>
+    <ul>
+        <li>PHP Commandline interpreter</li>
+        <li>Webbrowser</li>
+        <li>Rabobank Internet bankieren</li>
+    </ul>
+    <h3>Windows</h3>
+    <ul>
+        <li>Webbrowser</li>
+        <li>Rabobank Internet bankieren</li>
+    </ul>
+
+    <h2>Installatie / gebruik</h2>
+    <h3>Unix</h3>
+    <ul>
+        <li>Untar het rabograp-X.Y.tar.gz archief</li>
+        <li>Start Rabobank Internet bankieren en log in.</li>
+        <li>Ga naar <tt>Betalen en Sparen &rarr; Download</tt></li>
+        <li>Maak bij <tt>Alle transacties van de volgende rekening:</tt> een keuze over welke rekening je statiesteken wilt geneneren.</li>
+        <li>Voer een begin en einddatum in. Als begindatum kun je 01-01-2004 invullen (eerder kan niet, bij mij althans). Als einddatum vul je de datum van vandaag in.</li>
+        <li>Kies <tt>Kommagescheiden formaat</tt> en klik op de <tt>download</tt> knop.</li>
+        <li>Sla het resulterende bestand '<tt>mut.txt</tt>' op in de rabograp-X.Y/ directory.</li>
+        <li>Run het rabograp.php script: <tt>php ./rabograp.txt</tt></li>
+        <li>Open met je browser het <tt>rabograp.html</tt> bestand om de index pagina te laden.</li>
+    </ul>
+    <h3>Windows</h3>
+    <ul>
+        <li>Download en run het rabograp-X.Y.exe bestand. Het bestand maakt nu een directory aan met daarin het programma.</li>
+        <li>Start Rabobank Internet bankieren en log in.</li>
+        <li>Ga naar <tt>Betalen en Sparen &rarr; Download</tt></li>
+        <li>Maak bij <tt>Alle transacties van de volgende rekening:</tt> een keuze over welke rekening je statiesteken wilt geneneren.</li>
+        <li>Voer een begin en einddatum in. Als begindatum kun je 01-01-2004 invullen (eerder kan niet, bij mij althans). Als einddatum vul je de datum van vandaag in.</li>
+        <li>Kies <tt>Kommagescheiden formaat</tt> en klik op de <tt>download</tt> knop.</li>
+        <li>Sla het resulterende bestand '<tt>mut.txt</tt>' op in de rabograp-X.Y/ directory.</li>
+        <li>Dubbelklik het '<tt>rabograp.bat</tt> bestand.</tt></li>
+        <li>Heb even geduld (het programma is wat traag onder Windows). Nu start automatisch een INternet browser op met daarin de hoofdpagina van de rapportage.</li>
+    </ul>
+
+    <h2>Copyright / Licensie</h2>
+    <p>RaboGRAP is (C) Copyright van Ferry Boender</p>
+    <p>Gelicenseerd onder de GPL (General Public License). Dit betekend dat je het programma door mag sturen naar anderen en aan mag passen voor je eigen gebruik of voor commercieel gebruik (maar in dat laatste geval mag je het niet meer doorsturen naar anderen).</p>
+    <p></p>
+
+    <pre>
+RaboGRAP: A statistics and report generator for Rabobank banking receipts
+Copyright (C) 2006 Ferry Boender 
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+    </pre>
+
+</body>
+</html>

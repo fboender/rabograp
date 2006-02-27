@@ -1,0 +1,101 @@
+body {
+	font-family: arial;
+	font-size: 12px;
+	margin: 0px;
+}
+div.header {
+	font-family: arial black;
+	font-size: xx-large;
+	background-color: #010099;
+	color: #FF6300;
+	padding: 5px;
+}
+div.menu {
+    border-bottom: 1px solid #000000;
+    padding-left: 5px;
+}
+a {
+    text-decoration: none;
+}
+div.footer{
+	margin-top: 20px;
+	font-family: arial black;
+	background-color: #010099;
+	color: #FF6300;
+	padding: 5px;
+}
+div.footer a {
+    color: #FFFFFF;
+}
+div.contents {
+    border: 1px solid #505050;
+    background-color: #F6F6F6;
+    padding: 5px;
+}
+div.contents h1 {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+div.contents li {
+    list-style-type: square;
+}
+div.body {
+	padding: 5px;
+}
+table {
+	margin-left: 15px;
+}
+tr {
+	background-color: #F0F0F0;
+}
+tr.debit {
+	background-color: #FFD0D0;
+}
+td.credit{
+	background-color: #D0FFD0;
+}
+td.debit {
+	background-color: #FFD0D0;
+}
+tr.credit{
+	background-color: #D0FFD0;
+}
+div.debit {
+	background-color: #FF0000;
+	padding: 0px;
+	margin: 0px;
+}
+div.credit{
+	background-color: #00FF00;
+	padding: 0px;
+	margin: 0px;
+}
+th {
+	font-size: 12px;
+	white-space: nowrap;
+	text-align: left;
+	background-color: #707070;
+	color: #FFFFFF;
+}
+th.graph {
+	text-align: center;
+}
+td {
+	font-family: monospace;
+	font-size: 12px;
+	white-space: nowrap;
+	padding: 2px 15px 2px 2px;
+	border-bottom: 1px solid #FFFFFF;
+}
+td.graph {
+	border-right: 1px solid #606060;
+	text-align: center;
+	padding: 0px;
+	margin: -15px;
+}
+tr.month{
+	font-weight: bold;
+}
+h1 {
+}
+
