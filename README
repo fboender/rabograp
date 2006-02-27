@@ -10,6 +10,24 @@
    Compatibility : Unix, Windows, (alles wat php kan draaien) 
    Homepage      : http://www.electricmonk.nl                 
 
+Wat doet het?
+
+   RaboGRAP genereerd ruwweg de volgende dingen:
+
+     * Voor alle maanden, jaren en het totaal aantal transacties:
+          * Het totaal aantal transacties (bij- en afschrijvingen)
+          * De som van bedragen van alle transacties (alle, bij- en
+            afschrijvingen)
+          * De som van bedragen van alle transacties (alle, bij- en
+            afschrijvingen) per type (bijv. 'Acceptgiro' of 'Machtiging')
+          * Een overzicht van transacties (incl. aantal en bedrag som) per
+            tegenpartij (bijv. 'Agis zorgverzekeringen')
+          * Een overzicht van transacties (incl. aantal en bedrag som) per
+            datum (incl. totalen p/m, etc)
+     * Voor alle maanden van elk jaar:
+          * Een grafiek met een overzicht van de bij- en afschrijvingen van
+            elke maand.
+
 Benodigheden
 
   Unix
@@ -87,3 +105,7 @@ Copyright / Licensie
  along with this program; if not, write to the Free Software
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     
+
+  Thanks
+
+   Thanks to Michiel van Baak for feature-requests and testing.

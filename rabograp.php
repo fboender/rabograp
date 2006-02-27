@@ -347,28 +347,44 @@ class RReport {
 		$tDebit = $t->getFiltered(DCR, IS, 'D');
 		$tCredit = $t->getFiltered(DCR, IS, 'C');
 
+        $tDebitSum = $tDebit->getSum(AMM);
+        $tCreditSum = $tCredit->getSum(AMM);
+        if ($tCreditSum - $tDebitSum < 0) {
+            $diffClass = 'debit';
+        } else {
+            $diffClass = 'credit';
+        }
 		$out = "";
 
 		$out .= "<a name='debitcredit'><h2>Af/Bijschrijvingen</h2></a>\n";
 		$out .= "<a name='debitcredittotal'><h3>Totaal</h3></a>\n";
 		$out .= "<table cellpadding=0 cellspacing=0>\n";
-		$out .= "  <tr class='debit'><th>Totaal afgeschreven:</th><td class='debit' align='right'>&euro;".number_format($tDebit->getSum(AMM), 2)."</td></tr>";
-		$out .= "  <tr class='credit'><th>Totaal bijgeschreven:</th><td class='credit' align='right'>&euro;".number_format($tCredit->getSum(AMM), 2)."</td></tr>";
+		$out .= "  <tr class='debit'><th>Totaal afgeschreven:</th><td class='debit' align='right'>&euro;".number_format($tDebitSum, 2)."</td></tr>";
+		$out .= "  <tr class='credit'><th>Totaal bijgeschreven:</th><td class='credit' align='right'>&euro;".number_format($tCreditSum, 2)."</td></tr>";
 		$out .= "  <tr><th>Totaal:</th><td align='right' style='border-top: 1px solid #000000'>&euro;".number_format($t->getSum(AMM), 2)."</td></tr>";
+		$out .= "  <tr><th>Verschil:</th><td align='right' class='$diffClass' style='border-top: 1px solid #000000'>&euro;".number_format($tCreditSum - $tDebitSum, 2)."</td></tr>";
 		$out .= "</table>\n";
 		$out .= "<a name='pertype'><h3>Per type</h3></a>\n";
 		$out .= "<table cellpadding=0 cellspacing=0>\n";
-		$out .= "  <tr><th>&nbsp;</th><th class='debit'>Af</th> <th class='credit'>Bij</th> <th>Totaal</th> </tr>";
+		$out .= "  <tr><th>&nbsp;</th><th class='debit'>Af</th> <th class='credit'>Bij</th> <th>Totaal</th> <th>Verschil</th></tr>";
 		foreach($codes as $code => $descr) {
 			$tCode = $t->getFiltered(COD, IS, $code);
 			$tDebitCode = $tCode->getFiltered(DCR, IS, 'D');
 			$tCreditCode = $tCode->getFiltered(DCR, IS, 'C');
+            $tDebitCodeSum = $tDebitCode->getSum(AMM);
+            $tCreditCodeSum = $tCreditCode->getSum(AMM);
+            if ($tCreditCodeSum - $tDebitCodeSum < 0) {
+                $diffClass = 'debit';
+            } else {
+                $diffClass = 'credit';
+            }
 			$out .= "
 				<tr>
 					<th>".$descr.":</th>
-					<td class='debit' align='right'>&euro;".number_format($tDebitCode->getSum(AMM), 2)."</td>
-					<td class='credit' align='right'>&euro;".number_format($tCreditCode->getSum(AMM), 2)."</td>
+					<td class='debit' align='right'>&euro;".number_format($tDebitCodeSum, 2)."</td>
+					<td class='credit' align='right'>&euro;".number_format($tCreditCodeSum, 2)."</td>
 					<td align='right'>&euro;".number_format($tCode->getSum(AMM), 2)."</td>
+					<td align='right' class='$diffClass'>&euro;".number_format($tCreditCodeSum - $tDebitCodeSum, 2)."</td>
 				</tr>";
 		}
 		$out .= "</table>\n";
@@ -434,8 +450,14 @@ class RReport {
 
 			if (!$prevTransaction || strftime("%m", $st->{DAT}) != strftime("%m", $prevTransaction->{DAT})) {
 				if ($cntD != 0 || $cntC != 0) {
+                    if ($sumC - $sumD < 0) { 
+                        $diffClass = 'debit';
+                    } else {
+                        $diffClass = 'credit';
+                    }
 					$out .= "<tr><td>$cntD transacties</td><td>-</td><td class='debit' align='right'>&euro;".number_format($sumD, 2)."</td><td colspan='100'>&nbsp;</td></tr>";
 					$out .= "<tr><td>$cntC transacties</td><td>+</td><td class='credit' align='right'>&euro;".number_format($sumC, 2)."</td><td colspan='100'>&nbsp;</td></tr>";
+					$out .= "<tr><td>Verschil</td><td>&nbsp;</td><td class='$diffClass' align='right'>&euro;".number_format($sumC - $sumD, 2)."</td><td colspan='100'>&nbsp;</td></tr>";
 				}
 				$out .= "<tr class='month'><td colspan='100'><a href='rabograp_".strftime("%Y",$st->{DAT})."_".strftime("%m", $st->{DAT}).".html'>".strftime("%B", $st->{DAT})."</a></td></tr>";
 				$cntD = $cntC = 0;
@@ -461,11 +483,16 @@ class RReport {
 			}
 		}
 
-		/* For last month */
-		if ($cntD != 0 || $cntC != 0) {
-			$out .= "<tr><td>$cntD transacties</td><td>-</td><td class='debit' align='right'>&euro;".number_format($sumD, 2)."</td><td colspan='100'>&nbsp;</td></tr>";
-			$out .= "<tr><td>$cntC transacties</td><td>+</td><td class='credit' align='right'>&euro;".number_format($sumC, 2)."</td><td colspan='100'>&nbsp;</td></tr>";
-		}
+        if ($cntD != 0 || $cntC != 0) {
+            if ($sumC - $sumD < 0) { 
+                $diffClass = 'debit';
+            } else {
+                $diffClass = 'credit';
+            }
+            $out .= "<tr><td>$cntD transacties</td><td>-</td><td class='debit' align='right'>&euro;".number_format($sumD, 2)."</td><td colspan='100'>&nbsp;</td></tr>";
+            $out .= "<tr><td>$cntC transacties</td><td>+</td><td class='credit' align='right'>&euro;".number_format($sumC, 2)."</td><td colspan='100'>&nbsp;</td></tr>";
+            $out .= "<tr><td>Verschil</td><td>&nbsp;</td><td class='$diffClass' align='right'>&euro;".number_format($sumC - $sumD, 2)."</td><td colspan='100'>&nbsp;</td></tr>";
+        }
 
 		$out .= "</table>\n";
 

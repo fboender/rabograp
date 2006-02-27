@@ -1,3 +1,7 @@
+0.5
+    
+    - Description of what this script actually does in the README.
+    - Debit/Credit differences in all summeries. (e.g.: difference: E -210,-).
 0.4
 
     - Page with totals for all transactions added.
@@ -8,10 +12,10 @@
     - Month headers in transaction views are now links to the month overview page.
     - Euro sign added where it was missing.
     - Each page now has an index.
-	- All pages (Total, Year and Month) now show transaction per counter party (receiving party).
-	- 'All transactions' lists now have per-month totals (nr of transactions and sums).
-	- More usage of Credit/Debit colours! Nice little perty colours!
-	- Graphs of monthly debit/credit expenses in Year overview.
+    - All pages (Total, Year and Month) now show transaction per counter party (receiving party).
+    - 'All transactions' lists now have per-month totals (nr of transactions and sums).
+    - More usage of Credit/Debit colours! Nice little perty colours!
+    - Graphs of monthly debit/credit expenses in Year overview.
 
 0.3
 
