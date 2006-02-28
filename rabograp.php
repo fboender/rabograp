@@ -558,8 +558,8 @@ $tr = new RTransactionControl("mut.txt");
 /* Main index page */
 $pageMain = new RReport("RABO Gegenereerde Rapportages");
 $pageMain->addOutput("<a name='about'><h1>Over RaboGRAP</h1></a>\n");
-$pageMain->addOutput("<p>Deze rapportages zijn gegenereerd door middel van <a href='http://www.electricmonk.nl'>RaboGRAP</a>. RaboGRAP is &copy; Ferry Boender - 2006 en is verkrijgbaar onder de vrije software <a href='http://www.gnu.org/copyleft/gpl.html'>GPL</a> licensie.</p>");
-$pageMain->addOutput("<p>De auteur van deze software accepteert GEEN ENKELE VERANTWOORDING voor de inhoud en correctheid van deze rapportages! RaboGRAP is vrij en gratis verkrijgbaar en biedt geen ENKELE GARANTIE OVER DE (CORRECTE) WERKING VAN DEZE SOFWARE!. Voor meer informatie, zie de <a href='http://www.gnu.org/copyleft/gpl.html'>GPL</a> licensie overeenkomst.</p>");
+$pageMain->addOutput("<p>Deze rapportages zijn gegenereerd door middel van <a href='http://www.electricmonk.nl'>RaboGRAP</a>. RaboGRAP is &copy; Ferry Boender - 2006 en is verkrijgbaar onder de vrije software <a href='http://www.gnu.org/copyleft/gpl.html'>GPL</a> licentie.</p>");
+$pageMain->addOutput("<p>De auteur van deze software accepteert GEEN ENKELE VERANTWOORDING voor de inhoud en correctheid van deze rapportages! RaboGRAP is vrij en gratis verkrijgbaar en biedt geen ENKELE GARANTIE OVER DE (CORRECTE) WERKING VAN DEZE SOFWARE!. Voor meer informatie, zie de <a href='http://www.gnu.org/copyleft/gpl.html'>GPL</a> licentie overeenkomst.</p>");
 $pageMain->addOutput("<a name='total_overview'><h1>Totaal overzichten</h1></a>");
 $pageMain->addOutput("<ul>");
 $pageMain->addOutput("<li><a href='rabograp_all.html'>Alles</a></li>\n");
