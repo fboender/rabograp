@@ -1,11 +1,11 @@
-                                   RaboGRAPH
+                                    RaboGRAP
 
-   RaboGRAHP is een programma wat statistieken, overzichten en grafieken
+   RaboGRAP is een programma wat statistieken, overzichten en grafieken
    genereerd van je Rabobank afschriften. Deze afschriften kun je downloaden
    via Rabobank Internetbankieren.
 
    Auteur        : Ferry Boemder                              
-   Versie        : 0.4                                        
+   Versie        : 0.6                                        
    Licensie      : GNU GPL (General Public License)           
    Compatibility : Unix, Windows, (alles wat php kan draaien) 
    Homepage      : http://www.electricmonk.nl                 
@@ -16,14 +16,15 @@ Wat doet het?
 
      * Voor alle maanden, jaren en het totaal aantal transacties:
           * Het totaal aantal transacties (bij- en afschrijvingen)
-          * De som van bedragen van alle transacties (alle, bij- en
-            afschrijvingen)
-          * De som van bedragen van alle transacties (alle, bij- en
-            afschrijvingen) per type (bijv. 'Acceptgiro' of 'Machtiging')
+          * De som en verschillen van bedragen van alle transacties (alle,
+            bij- en afschrijvingen)
+          * De som en verschillen van bedragen van alle transacties (alle,
+            bij- en afschrijvingen) per type (bijv. 'Acceptgiro' of
+            'Machtiging')
           * Een overzicht van transacties (incl. aantal en bedrag som) per
             tegenpartij (bijv. 'Agis zorgverzekeringen')
-          * Een overzicht van transacties (incl. aantal en bedrag som) per
-            datum (incl. totalen p/m, etc)
+          * Een overzicht van transacties (incl. aantal en bedrag
+            som/verschil) per datum (incl. totalen p/m, etc)
      * Voor alle maanden van elk jaar:
           * Een grafiek met een overzicht van de bij- en afschrijvingen van
             elke maand.
@@ -49,7 +50,7 @@ Installatie / gebruik
      * Start Rabobank Internet bankieren en log in.
      * Ga naar Betalen en Sparen -> Download
      * Maak bij Alle transacties van de volgende rekening: een keuze over
-       welke rekening je statiesteken wilt geneneren.
+       welke rekening je statistieken wilt geneneren.
      * Voer een begin en einddatum in. Als begindatum kun je 01-01-2004
        invullen (eerder kan niet, bij mij althans). Als einddatum vul je de
        datum van vandaag in.
@@ -76,36 +77,47 @@ Installatie / gebruik
        directory.
      * Dubbelklik het 'rabograp.bat bestand.
      * Heb even geduld (het programma is wat traag onder Windows). Nu start
-       automatisch een INternet browser op met daarin de hoofdpagina van de
+       automatisch een Internet browser op met daarin de hoofdpagina van de
        rapportage.
 
-Copyright / Licensie
+  Upload interface
 
-   RaboGRAP is (C) Copyright van Ferry Boender
+   RaboGRAP heeft een upload interface (dankzij Michiel van Baak).
+     * Gooi de inhoud van het rabograp-X.Y.tar.gz in een directory die door
+       de webserver benaderd kan worden.
+     * Zorg er voor dat de PHP configuratie het uploaden van files toestaat
+       (safe_mode en base_dir).
+     * Zorg er voor dat de directory waar rabograp.php in staat schrijfbaar
+       is voor de webserver gebruiker.
 
-   Gelicenseerd onder de GPL (General Public License). Dit betekend dat je
-   het programma door mag sturen naar anderen en aan mag passen voor je eigen
-   gebruik of voor commercieel gebruik (maar in dat laatste geval mag je het
-   niet meer doorsturen naar anderen).
+Copyright / Licentie
 
- RaboGRAP: A statistics and report generator for Rabobank banking receipts
- Copyright (C) 2006 Ferry Boender
+   RaboGRAP is (C) Copyright van Ferry Boender.
 
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
+   Delen van RaboGRAP zijn (C) Michiel van Baak.
 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+   Gelicenseerd onder de GPL (General Public License).
 
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+         RaboGRAP: A statistics and report generator for Rabobank banking receipts
+         Copyright (C) 2006 Ferry Boender
+
+         This program is free software; you can redistribute it and/or
+         modify it under the terms of the GNU General Public License
+         as published by the Free Software Foundation; either version 2
+         of the License, or (at your option) any later version.
+
+         This program is distributed in the hope that it will be useful,
+         but WITHOUT ANY WARRANTY; without even the implied warranty of
+         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+         GNU General Public License for more details.
+
+         You should have received a copy of the GNU General Public License
+         along with this program; if not, write to the Free Software
+         Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     
 
-  Thanks
+  Met dank aan
 
-   Thanks to Michiel van Baak for feature-requests and testing.
+     * Michiel en Nancy van Baak: Goede ideeen, code en testen.
+     * De Rabobank voor het beschikbaar maken van rekening-transacties via
+       Rabobank internet bankieren.

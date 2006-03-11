@@ -39,6 +39,14 @@ div.contents h1 {
 div.contents li {
     list-style-type: square;
 }
+div.error {
+    border: 1px solid #000000;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+div.error h1 {
+    color: #F00000;
+}
 div.body {
 	padding: 5px;
 }

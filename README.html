@@ -1,13 +1,13 @@
 <html>
 <head>
-    <title>RaboGRAPH</title>
+    <title>RaboGRAP</title>
 </head>
 <body>
-    <h1>RaboGRAPH</h1>
-    <p>RaboGRAHP is een programma wat statistieken, overzichten en grafieken genereerd van je Rabobank afschriften. Deze afschriften kun je downloaden via Rabobank Internetbankieren.</p>
+    <h1>RaboGRAP</h1>
+    <p>RaboGRAP is een programma wat statistieken, overzichten en grafieken genereerd van je Rabobank afschriften. Deze afschriften kun je downloaden via Rabobank Internetbankieren.</p>
     <table>
         <tr><td><b>Auteur</b></td><td>: Ferry Boemder</td></tr>
-        <tr><td><b>Versie</b></td><td>: 0.5</td></tr>
+        <tr><td><b>Versie</b></td><td>: 0.6</td></tr>
         <tr><td><b>Licensie</b></td><td>: <a href="http://www.gnu.org/copyleft/gpl.html">GNU GPL (General Public License)</a></td></tr>
         <tr><td><b>Compatibility</b></td><td>: Unix, Windows, (alles wat php kan draaien)</td></tr>
         <tr><td><b>Homepage</b></td><td>: <a href="http://www.electricmonk.nl/">http://www.electricmonk.nl</a></td></tr>
@@ -68,9 +68,17 @@
         <li>Dubbelklik het '<tt>rabograp.bat</tt> bestand.</tt></li>
         <li>Heb even geduld (het programma is wat traag onder Windows). Nu start automatisch een Internet browser op met daarin de hoofdpagina van de rapportage.</li>
     </ul>
+    <h3>Upload interface</h3>
+    <p>RaboGRAP heeft een upload interface (dankzij Michiel van Baak).
+    <ul>
+        <li>Gooi de inhoud van het rabograp-X.Y.tar.gz in een directory die door de webserver benaderd kan worden.</li>
+        <li>Zorg er voor dat de PHP configuratie het uploaden van files toestaat (safe_mode en base_dir).</li>
+        <li>Zorg er voor dat de directory waar rabograp.php in staat schrijfbaar is voor de webserver gebruiker.</tt></li>
+    </ul>
 
     <h2>Copyright / Licentie</h2>
-    <p>RaboGRAP is (C) Copyright van Ferry Boender</p>
+    <p>RaboGRAP is (C) Copyright van Ferry Boender.</p>
+    <p>Delen van RaboGRAP zijn (C) Michiel van Baak.</p>
     <p>Gelicenseerd onder de GPL (General Public License).</p>
     <p></p>
 
@@ -92,8 +100,15 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     </pre>
-    <h3>Thanks</h3>
-    <p>Thanks to Michiel van Baak for feature-requests and testing.</p>
+    <h3>Met dank aan</h3>
+    <ul>
+    <li>Michiel en Nancy van Baak: Goede ideeen, code en testen.</li>
+    <li>De Rabobank voor het beschikbaar maken van rekening-transacties via Rabobank internet bankieren.</li>
+    </ul>
 
+    <h2>Veel gestelde vragen</h2>
+    <p>Vraag: <i>Wat is de zin van het leven?</i><br />Antwoord: 42.</p>
+    <h3>Weinig gestelde vragen</h3>
+    <p>Vraag: <i>Hoeveel weegt een sumo-worstelaar?</i><br />Antwoord: Op de aarde gemiddeld zo'n 330 Emperial pound, oftewel 150 kg.</p>
 </body>
 </html>

@@ -1,5 +1,5 @@
 #!/usr/bin/env php
-<?
+<?php
 
 /* 
  * RaboGRAP
@@ -23,6 +23,8 @@
  *   
  * Het script genereerd nu je onzin statistiekjes.
  */
+
+// <quick-n-dirty-mode>
 
 error_reporting(E_ALL);
 
@@ -305,6 +307,7 @@ class RReport {
         $out = "";
         $out .= '
             <div class="contents">
+            <a name="top"></a>
             <h1>Inhoud</h1>
             ';
             for ($i = 0; $i < count($headings[2]); $i++) {
@@ -332,7 +335,7 @@ class RReport {
 		$tCredit = $t->getFiltered(DCR, IS, 'C');
 
 		$out = "";
-		$out .= "<a name='transactions'><h2>Transacties</h2></a>\n";
+		$out .= "<a href='#top' style='float:right;display:block'>[Naar inhoud]</a><a name='transactions'><h2>Transacties</h2></a>\n";
 		$out .= "<table cellpadding=0 cellspacing=0>\n";
 		$out .= "<tr><th>Totaal aantal afschrijvingen:</th><td class='debit' align='right'>".count($tDebit->transactions)."</td></tr>";
 		$out .= "<tr><th>Totaal aantal bijschrijvingen:</th><td class='credit' align='right'>".count($tCredit->transactions)."</td></tr>";
@@ -356,8 +359,8 @@ class RReport {
         }
 		$out = "";
 
-		$out .= "<a name='debitcredit'><h2>Af/Bijschrijvingen</h2></a>\n";
-		$out .= "<a name='debitcredittotal'><h3>Totaal</h3></a>\n";
+		$out .= "<a href='#top' style='float:right;display:block'>[Naar inhoud]</a><a name='debitcredit'><h2>Af/Bijschrijvingen</h2></a>\n";
+		$out .= "<a href='#top' style='float:right;display:block'>[Naar inhoud]</a><a name='debitcredittotal'><h3>Totaal</h3></a>\n";
 		$out .= "<table cellpadding=0 cellspacing=0>\n";
 		$out .= "  <tr class='debit'><th>Totaal afgeschreven:</th><td class='debit' align='right'>&euro;".number_format($tDebitSum, 2)."</td></tr>";
 		$out .= "  <tr class='credit'><th>Totaal bijgeschreven:</th><td class='credit' align='right'>&euro;".number_format($tCreditSum, 2)."</td></tr>";
@@ -395,7 +398,7 @@ class RReport {
 	public function genTransPerCounterParty($t) {
 		$out = "";
 		$cnt = 0;
-		$out .= "<a name='all_trans_cpr'><h1>Alle transacties (Tegenpartij)</h1></a>\n";
+		$out .= "<a href='#top' style='float:right;display:block'>[Naar inhoud]</a><a name='all_trans_cpr'><h1>Alle transacties (Tegenpartij)</h1></a>\n";
 
 		$uniqCPRs = $t->getUnique(CPR);
 		sort($uniqCPRs);
@@ -403,7 +406,7 @@ class RReport {
 			$tCPR = $t->getFiltered(CPR, IS, $uniqCPR);
 			$tCPR->sortTransactions(DAT, SORT_DESC);
 
-			$out .= "<a name='all_trans_cpr_".str_replace(' ', '_', strtolower($uniqCPR))."'><h2>".strtolower($uniqCPR)."</h2></a>\n";
+			$out .= "<a href='#top' style='float:right;display:block'>[Naar inhoud]</a><a name='all_trans_cpr_".str_replace(' ', '_', strtolower($uniqCPR))."'><h2>".strtolower($uniqCPR)."</h2></a>\n";
 			$out .= "<table cellpadding=0 cellspacing=0>\n";
 			$out .= "<tr> <th>Datum</th> <th>+/-</th> <th>Bedrag</th> <th>Type</th> <th>Omschrijving</th> </tr>\n";
 
@@ -440,7 +443,7 @@ class RReport {
 		$sumD = 0;
 		$sumC = 0;
 		$out = "";
-		$out .= "<a name='all_trans_date'><h1>Alle transacties (datum)</h1></a>\n";
+		$out .= "<a href='#top' style='float:right;display:block'>[Naar inhoud]</a><a name='all_trans_date'><h1>Alle transacties (datum)</h1></a>\n";
 		$out .= "<table cellpadding=0 cellspacing=0>\n";
 		$out .= "<tr> <th>Datum</th> <th>+/-</th> <th>Bedrag</th> <th>Type</th> <th>Tegenpartij</th> <th>Omschrijving</th> </tr>\n";
 
@@ -521,7 +524,7 @@ class RReport {
 		}
 
 		$out = "";
-		$out .= "<a name='graph'><h1>Grafiek (maand)</h1></a>\n";
+		$out .= "<a href='#top' style='float:right;display:block'>[Naar inhoud]</a><a name='graph'><h1>Grafiek (maand)</h1></a>\n";
 		$out .= "<table cellpadding=0 cellspacing=0>\n";
 		$out .= "<tr>";
 		for ($i = 1; $i <= 12; $i++) {
@@ -553,79 +556,87 @@ class RReport {
 	}
 
 }
-//print(number_format(memory_get_usage())."\n");
-$tr = new RTransactionControl("mut.txt");
-/* Main index page */
-$pageMain = new RReport("RABO Gegenereerde Rapportages");
-$pageMain->addOutput("<a name='about'><h1>Over RaboGRAP</h1></a>\n");
-$pageMain->addOutput("<p>Deze rapportages zijn gegenereerd door middel van <a href='http://www.electricmonk.nl'>RaboGRAP</a>. RaboGRAP is &copy; Ferry Boender - 2006 en is verkrijgbaar onder de vrije software <a href='http://www.gnu.org/copyleft/gpl.html'>GPL</a> licentie.</p>");
-$pageMain->addOutput("<p>De auteur van deze software accepteert GEEN ENKELE VERANTWOORDING voor de inhoud en correctheid van deze rapportages! RaboGRAP is vrij en gratis verkrijgbaar en biedt geen ENKELE GARANTIE OVER DE (CORRECTE) WERKING VAN DEZE SOFWARE!. Voor meer informatie, zie de <a href='http://www.gnu.org/copyleft/gpl.html'>GPL</a> licentie overeenkomst.</p>");
-$pageMain->addOutput("<a name='total_overview'><h1>Totaal overzichten</h1></a>");
-$pageMain->addOutput("<ul>");
-$pageMain->addOutput("<li><a href='rabograp_all.html'>Alles</a></li>\n");
-$pageMain->addOutput("</ul>");
 
-$pageMain->addOutput("<a name='year_overview'><h1>Jaar overzichten</h1></a>");
-$pageMain->addOutput("<ul>");
-for($year = (int)strftime("%Y", $tr->getSmallest(DAT)); $year <= (int)strftime("%Y", $tr->getLargest(DAT)); $year++) {
-	$pageMain->addOutput("<li><a href='rabograp_$year.html'>$year</a></li>\n");
-}
-$pageMain->addOutput("</ul>");
+class RControl {
 
-$pageMain->addOutput("<a name='month_overview'><h1>Maand overzichten</h1></a>");
-$pageMain->addOutput("<ul>");
-for($year = (int)strftime("%Y", $tr->getSmallest(DAT)); $year <= (int)strftime("%Y", $tr->getLargest(DAT)); $year++) {
-	$pageMain->addOutput("<li><b>$year</b> : ");
-	for ($month = 1; $month <= 12; $month++) {
-        if ($tr->getSmallest(DAT) > mktime(0,0,0,$month, 1, $year) ||
-            $tr->getLargest(DAT) < mktime(0,0,0,$month, 1, $year)) {
-            $pageMain->addOutput(strftime("%B", mktime(0,0,0,$month,1,0))." ");
-        } else {
-            $pageMain->addOutput("<a href='rabograp_".$year."_".sprintf("%02d", $month).".html'>".strftime("%B", mktime(0,0,0,$month,1,0))."</a> ");
+    public static function generateReports($inFile) {
+        $tr = new RTransactionControl($inFile);
+        /* Main index page */
+        $pageMain = new RReport("RABO Gegenereerde Rapportages");
+        $pageMain->addOutput("<a name='about'><h1>Over RaboGRAP</h1></a>\n");
+        $pageMain->addOutput("<p>Deze rapportages zijn gegenereerd door middel van <a href='http://www.electricmonk.nl'>RaboGRAP</a>. RaboGRAP is &copy; Ferry Boender - 2006 en is verkrijgbaar onder de vrije software <a href='http://www.gnu.org/copyleft/gpl.html'>GPL</a> licentie.</p>");
+        $pageMain->addOutput("<p>De auteur van deze software accepteert GEEN ENKELE VERANTWOORDING voor de inhoud en correctheid van deze rapportages! RaboGRAP is vrij en gratis verkrijgbaar en biedt geen ENKELE GARANTIE OVER DE (CORRECTE) WERKING VAN DEZE SOFWARE!. Voor meer informatie, zie de <a href='http://www.gnu.org/copyleft/gpl.html'>GPL</a> licentie overeenkomst.</p>");
+        $pageMain->addOutput("<a name='total_overview'><h1>Totaal overzichten</h1></a>");
+        $pageMain->addOutput("<ul>");
+        $pageMain->addOutput("<li><a href='rabograp_all.html'>Alles</a></li>\n");
+        $pageMain->addOutput("</ul>");
+
+        $pageMain->addOutput("<a name='year_overview'><h1>Jaar overzichten</h1></a>");
+        $pageMain->addOutput("<ul>");
+        for($year = (int)strftime("%Y", $tr->getSmallest(DAT)); $year <= (int)strftime("%Y", $tr->getLargest(DAT)); $year++) {
+            $pageMain->addOutput("<li><a href='rabograp_$year.html'>$year</a></li>\n");
         }
-	}
-	$pageMain->addOutput("</li>\n");
-}
-$pageMain->addOutput("</ul>");
-$pageMain->save("rabograp.html");
+        $pageMain->addOutput("</ul>");
 
-$pageAll = new RReport("Totalen voor alles");
-$pageAll->addOutput("<a name='overview'><h1>Overzicht</h1></a>\n");
-$pageAll->addOutput($pageAll->genOverviewNrOfTrans($tr));
-$pageAll->addOutput($pageAll->genOverviewDebCred($tr));
-$pageAll->addOutput($pageAll->genTransPerCounterParty($tr));
-$pageAll->addOutput($pageAll->genTransAll($tr));
-$pageAll->save("rabograp_all.html");
-
-/* Year dumps */
-for($year = (int)strftime("%Y", $tr->getSmallest(DAT)); $year <= (int)strftime("%Y", $tr->getLargest(DAT)); $year++) {
-	$tYear = $tr->getFromTo(mktime(0,0,0,1,1,$year), mktime(0,0,0,1,1,$year+1));
-
-	$pageYear = new RReport("Totalen voor ".$year);
-	$pageYear->addOutput("<a name='overview'><h1>Overzicht</h1></a>\n");
-	$pageYear->addOutput($pageYear->genOverviewNrOfTrans($tYear));
-	$pageYear->addOutput($pageYear->genOverviewDebCred($tYear));
-	$pageYear->addOutput($pageAll->genTransPerCounterParty($tYear));
-	$pageYear->addOutput($pageYear->genGraphAllMonths($tYear));
-	$pageYear->addOutput($pageYear->genTransAll($tYear));
-	$pageYear->save("rabograp_$year.html");
-
-	/* Per month */
-	for ($month = 1; $month <= 12; $month++) {
-        if ($tr->getSmallest(DAT) > mktime(0,0,0,$month, 1, $year) ||
-            $tr->getLargest(DAT) < mktime(0,0,0,$month, 1, $year)) {
-            ;
-        } else {
-            $tMonth = $tr->getFromTo(mktime(0,0,0,$month,1,$year), mktime(0,0,0,$month+1,1,$year));
-            $pageMonth = new RReport("Totalen voor ".strftime("%B", mktime(0,0,0,$month,1,0))." ".$year);
-            $pageMonth->addOutput("<a name='overview2'><h1>Overzicht</h1></a>\n");
-            $pageMonth->addOutput($pageMonth->genOverviewNrOfTrans($tMonth));
-            $pageMonth->addOutput($pageMonth->genOverviewDebCred($tMonth));
-			$pageMonth->addOutput($pageAll->genTransPerCounterParty($tMonth));
-            $pageMonth->addOutput($pageMonth->genTransAll($tMonth));
-            $pageMonth->save("rabograp_".$year."_".sprintf("%02d",$month).".html");
+        $pageMain->addOutput("<a name='month_overview'><h1>Maand overzichten</h1></a>");
+        $pageMain->addOutput("<ul>");
+        for($year = (int)strftime("%Y", $tr->getSmallest(DAT)); $year <= (int)strftime("%Y", $tr->getLargest(DAT)); $year++) {
+            $pageMain->addOutput("<li><b>$year</b> : ");
+            for ($month = 1; $month <= 12; $month++) {
+                if ($tr->getSmallest(DAT) > mktime(0,0,0,$month, 1, $year) ||
+                    $tr->getLargest(DAT) < mktime(0,0,0,$month, 1, $year)) {
+                    $pageMain->addOutput(strftime("%B", mktime(0,0,0,$month,1,0))." ");
+                } else {
+                    $pageMain->addOutput("<a href='rabograp_".$year."_".sprintf("%02d", $month).".html'>".strftime("%B", mktime(0,0,0,$month,1,0))."</a> ");
+                }
+            }
+            $pageMain->addOutput("</li>\n");
         }
-	}
+        $pageMain->addOutput("</ul>");
+        $pageMain->save("rabograp.html");
+
+        $pageAll = new RReport("Totalen voor alles");
+        $pageAll->addOutput("<a name='overview'><h1>Overzicht</h1></a>\n");
+        $pageAll->addOutput($pageAll->genOverviewNrOfTrans($tr));
+        $pageAll->addOutput($pageAll->genOverviewDebCred($tr));
+        $pageAll->addOutput($pageAll->genTransPerCounterParty($tr));
+        $pageAll->addOutput($pageAll->genTransAll($tr));
+        $pageAll->save("rabograp_all.html");
+
+        /* Year dumps */
+        for($year = (int)strftime("%Y", $tr->getSmallest(DAT)); $year <= (int)strftime("%Y", $tr->getLargest(DAT)); $year++) {
+            $tYear = $tr->getFromTo(mktime(0,0,0,1,1,$year), mktime(0,0,0,1,1,$year+1));
+
+            $pageYear = new RReport("Totalen voor ".$year);
+            $pageYear->addOutput("<a name='overview'><h1>Overzicht</h1></a>\n");
+            $pageYear->addOutput($pageYear->genOverviewNrOfTrans($tYear));
+            $pageYear->addOutput($pageYear->genOverviewDebCred($tYear));
+            $pageYear->addOutput($pageAll->genTransPerCounterParty($tYear));
+            $pageYear->addOutput($pageYear->genGraphAllMonths($tYear));
+            $pageYear->addOutput($pageYear->genTransAll($tYear));
+            $pageYear->save("rabograp_$year.html");
+
+            /* Per month */
+            for ($month = 1; $month <= 12; $month++) {
+                if ($tr->getSmallest(DAT) > mktime(0,0,0,$month, 1, $year) ||
+                    $tr->getLargest(DAT) < mktime(0,0,0,$month, 1, $year)) {
+                    ;
+                } else {
+                    $tMonth = $tr->getFromTo(mktime(0,0,0,$month,1,$year), mktime(0,0,0,$month+1,1,$year));
+                    $pageMonth = new RReport("Totalen voor ".strftime("%B", mktime(0,0,0,$month,1,0))." ".$year);
+                    $pageMonth->addOutput("<a name='overview2'><h1>Overzicht</h1></a>\n");
+                    $pageMonth->addOutput($pageMonth->genOverviewNrOfTrans($tMonth));
+                    $pageMonth->addOutput($pageMonth->genOverviewDebCred($tMonth));
+                    $pageMonth->addOutput($pageAll->genTransPerCounterParty($tMonth));
+                    $pageMonth->addOutput($pageMonth->genTransAll($tMonth));
+                    $pageMonth->save("rabograp_".$year."_".sprintf("%02d",$month).".html");
+                }
+            }
+        }
+    }
 }
 
+// </quick-n-dirty-mode>
+
+RControl::generateReports("mut.txt");
 ?>
