@@ -57,7 +57,7 @@ Installatie / gebruik
      * Kies Kommagescheiden formaat en klik op de download knop.
      * Sla het resulterende bestand 'mut.txt' op in de rabograp-X.Y/
        directory.
-     * Run het rabograp.php script: php ./rabograp.txt
+     * Run het rabograp.php script: php ./rabograp.php
      * Open met je browser het rabograp.html bestand om de index pagina te
        laden.
 
